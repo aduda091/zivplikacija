@@ -11,15 +11,27 @@
     <body>
         <div id="app">
             <div class="container mx-auto px-4">
-                <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                    Check our awesome team members
+                <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900 text-center">
+                    Živdačina
                 </h1>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div
                         v-for="(clip, index) in soundClips"
                         :key="index"
-                        class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center cursor-pointer group hover:bg-purple-700"
+                        @click="playItem(clip)"
+                        class="
+                            w-full
+                            bg-white
+                            rounded-lg
+                            p-12
+                            flex flex-col
+                            justify-center
+                            items-center
+                            cursor-pointer
+                            group
+                            hover:bg-purple-700
+                        "
                     >
                         <div class="mb-8">
                             <img
@@ -35,6 +47,10 @@
                     </div>
                 </div>
             </div>
+
+            <audio ref="audioPlayer">
+                <source v-if="currentAudio" :src="`audio/${currentAudio}`" type="audio/mpeg" />
+            </audio>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
