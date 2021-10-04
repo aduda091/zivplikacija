@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+
+        <title>Živplikacija</title>
+    </head>
+    <body>
+        <div id="app">
+            <div class="container mx-auto px-4">
+                <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+                    Check our awesome team members
+                </h1>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div
+                        v-for="(clip, index) in soundClips"
+                        :key="index"
+                        class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center cursor-pointer group hover:bg-purple-700"
+                    >
+                        <div class="mb-8">
+                            <img
+                                class="object-center object-cover rounded-full h-36 w-36"
+                                :src="clip.image"
+                                :alt="clip.title"
+                            />
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xl text-gray-700 font-bold mb-2 group-hover:text-white">{{clip.title}}</p>
+                            <p class="text-base text-gray-400 font-normal group-hover:text-white">{{clip.artist}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
